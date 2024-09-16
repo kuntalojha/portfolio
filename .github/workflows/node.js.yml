@@ -26,16 +26,25 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    
-    # Change directory to client where package.json and lock files exist
+
+    # Navigate to the client directory and install dependencies
     - name: Install dependencies
-      working-directory: ./client
-      run: npm ci
-    
-    # Build the project
+      run: |
+        cd client
+        npm ci
+
+    # Build the project in the client directory
     - name: Build
-      working-directory: ./client
-      run: npm run build
+      run: |
+        cd client
+        npm run build
+    
+    # Run tests in the client directory
+    - name: Test
+      run: |
+        cd client
+        npm test
+
     
     # Run tests
     - name: Test
