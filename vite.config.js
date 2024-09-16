@@ -15,5 +15,4 @@ export default defineConfig({
     open: true,
     host: '0.0.0.0',
   },
-  base: '/portfolio/',
 });
